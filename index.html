@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="FileSimulator: importación local, control de calidad y análisis de archivos de medidas UTE.">
+    <meta name="theme-color" content="#145c43">
+    <title>FileSimulator · Análisis de consumos UTE</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/results.css">
+  </head>
+  <body>
+    <noscript>
+      <div class="noscript-message">FileSimulator necesita JavaScript habilitado para leer el archivo Excel en este navegador.</div>
+    </noscript>
+
+    <div id="app" class="app-shell">
+      <header class="app-header">
+        <a class="brand" href="./" aria-label="FileSimulator, inicio">
+          <span class="brand-mark" aria-hidden="true">F</span>
+          <span>
+            <strong>FileSimulator</strong>
+            <small>Importación y control de calidad</small>
+          </span>
+        </a>
+        <span class="local-pill">Procesamiento local</span>
+      </header>
+
+      <main>
+        <section id="import-hero" class="hero" aria-labelledby="page-title">
+          <p class="eyebrow">Módulo de importación</p>
+          <h1 id="page-title">Comprobá la calidad del archivo antes de analizarlo.</h1>
+          <p>El Excel se procesa dentro de este navegador. FileSimulator no completa, corrige ni inventa mediciones.</p>
+        </section>
+
+        <section id="upload-view" class="upload-section" aria-labelledby="upload-title">
+          <div id="drop-zone" class="drop-zone" tabindex="0" role="button" aria-describedby="upload-help">
+            <span class="upload-symbol" aria-hidden="true">↑</span>
+            <p class="eyebrow">Archivo de medidas UTE</p>
+            <h2 id="upload-title">Arrastrá el Excel hasta acá</h2>
+            <p id="upload-help">o seleccioná un archivo <code>.xlsx</code> con una hoja llamada <code>Measures</code>.</p>
+            <button id="select-file-button" class="button button-primary" type="button">Seleccionar archivo</button>
+            <input id="file-input" class="visually-hidden" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+            <div class="privacy-note"><span aria-hidden="true">✓</span> El archivo no se transmite ni se guarda.</div>
+          </div>
+        </section>
+
+        <section id="processing-view" class="processing-card" aria-live="polite" hidden>
+          <div class="spinner" aria-hidden="true"></div>
+          <p class="eyebrow">Procesando</p>
+          <h2 id="processing-message">Preparando el archivo…</h2>
+          <p id="processing-file" class="processing-file"></p>
+          <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span id="progress-bar"></span>
+          </div>
+          <p id="progress-label">0 %</p>
+          <button id="cancel-button" class="button button-text" type="button">Cancelar</button>
+        </section>
+
+        <section id="result-view" class="results-layout" hidden>
+          <div id="file-summary"></div>
+          <div id="quality-summary"></div>
+          <div id="data-preview"></div>
+          <div id="issues-list"></div>
+
+          <section class="action-bar" aria-label="Acciones del archivo">
+            <div id="acknowledgement-area"></div>
+            <div class="action-buttons">
+              <button id="discard-button" class="button button-secondary" type="button">Descartar y cargar otro</button>
+              <button id="continue-button" class="button button-primary" type="button" disabled>Continuar con el análisis</button>
+            </div>
+          </section>
+        </section>
+
+        <section id="analysis-results-view" class="analysis-results-view" aria-live="polite" hidden>
+          <div id="analysis-results-content" class="analysis-results-content"></div>
+          <section class="action-bar analysis-action-bar" aria-label="Acciones del análisis">
+            <button id="analysis-discard-button" class="button button-secondary" type="button">Descartar y cargar otro archivo</button>
+          </section>
+        </section>
+
+        <section id="accepted-view" class="accepted-card" hidden>
+          <span class="accepted-icon" aria-hidden="true">✓</span>
+          <p class="eyebrow">Importación confirmada</p>
+          <h2>El dataset normalizado está listo.</h2>
+          <p id="accepted-message"></p>
+          <button id="accepted-discard-button" class="button button-secondary" type="button">Cargar otro archivo</button>
+        </section>
+
+        <section id="fatal-error" class="fatal-error" role="alert" hidden>
+          <h2>No pudimos procesar el archivo</h2>
+          <p id="fatal-error-message"></p>
+          <button id="retry-button" class="button button-secondary" type="button">Volver a intentar</button>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <span>FileSimulator · Importador v0.2 · Motor v1 · Resultados v0.1</span>
+        <span>HTML, CSS y JavaScript · Sin servidor</span>
+      </footer>
+    </div>
+
+    <script src="js/vendor/xlsx.full.min.js"></script>
+    <script src="js/namespace.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/parser.js"></script>
+    <script src="js/validator.js"></script>
+    <script src="js/importer.js"></script>
+    <script src="js/analysis/contract.js"></script>
+    <script src="js/analysis/indexer.js"></script>
+    <script src="js/analysis/statistics.js"></script>
+    <script src="js/analysis/aggregations.js"></script>
+    <script src="js/analysis/analyzer.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/results/results-ui.js"></script>
+    <script src="js/results/results-controller.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

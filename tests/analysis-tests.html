@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FileSimulator · Pruebas del motor de análisis</title>
+    <style>
+      body { max-width: 900px; margin: 40px auto; padding: 0 20px; color: #17211b; background: #f4f7f4; font-family: system-ui, sans-serif; }
+      section { margin: 18px 0; padding: 20px; border: 1px solid #dce4de; border-radius: 14px; background: white; }
+      h1, h2 { margin-top: 0; }
+      button, input { font: inherit; }
+      button { padding: 10px 14px; border: 0; border-radius: 9px; color: white; background: #167451; cursor: pointer; }
+      li { margin: 8px 0; }
+      .pass { color: #0e6a46; }
+      .fail { color: #b4232c; font-weight: 700; }
+    </style>
+  </head>
+  <body>
+    <h1>Pruebas del motor de análisis</h1>
+    <p>Estas pruebas se ejecutan completamente en el navegador.</p>
+    <section>
+      <h2>Contrato y reglas del motor</h2>
+      <ul id="unit-results"></ul>
+    </section>
+    <section>
+      <h2>Integración con Hotel La Esmeralda</h2>
+      <p>Seleccioná el Excel original. El archivo se procesa localmente y luego se entrega como dataset normalizado al motor.</p>
+      <input id="hotel-file" type="file" accept=".xlsx">
+      <button id="hotel-run" type="button">Ejecutar integración</button>
+      <ul id="hotel-results"></ul>
+    </section>
+
+    <script src="../js/vendor/xlsx.full.min.js"></script>
+    <script src="../js/namespace.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/parser.js"></script>
+    <script src="../js/validator.js"></script>
+    <script src="../js/importer.js"></script>
+    <script src="../js/analysis/contract.js"></script>
+    <script src="../js/analysis/indexer.js"></script>
+    <script src="../js/analysis/statistics.js"></script>
+    <script src="../js/analysis/aggregations.js"></script>
+    <script src="../js/analysis/analyzer.js"></script>
+    <script src="analysis-tests.js"></script>
+  </body>
+</html>
